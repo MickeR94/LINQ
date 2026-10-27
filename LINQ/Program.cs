@@ -234,11 +234,11 @@ namespace LINQ
 
 
             // Gruppera studenter per klass
-            /*Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("--- Gruppera studenter per klass ---");
             List<Student> klassgrupp = new();
             klassgrupp = (from student in studenter
-                          select student).GroupBy(student.Klass).ToList();*/
+                          select student).GroupBy(student => student.klass).ToList();
         }
     }
 }
