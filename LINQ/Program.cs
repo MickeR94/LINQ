@@ -233,12 +233,45 @@ namespace LINQ
             Console.WriteLine(studentId);
 
 
-            // Gruppera studenter per klass
+            // Gruppera studenter per klass -- Kan inte klura ut hur det ska blir studenter här i grupperingarna...
             Console.WriteLine();
             Console.WriteLine("--- Gruppera studenter per klass ---");
-            List<Student> klassgrupp = new();
-            klassgrupp = (from student in studenter
-                          select student).GroupBy(student => student.klass).ToList();
+            var classgroup = (from student in studenter
+                              group student by student.Klass);
+            foreach (var group in classgroup)
+            {
+                Console.WriteLine($"{group.Key}");
+            }
+
+            // Summera alla poäng
+            Console.WriteLine();
+            Console.WriteLine("--- Summera alla poäng ---");
+            int points = (from student in studenter
+                          select student.Poang).Sum();
+
+            Console.WriteLine($"Total points: {points}");
+
+
+            // Medel av alla poäng
+            Console.WriteLine();
+            Console.WriteLine("--- Summera alla poäng ---");
+            double avgPoints = (from student in studenter
+                          select student.Poang).Average();
+
+            Console.WriteLine($"Average points: {avgPoints}");
+
+            // Min and Max of the points
+            Console.WriteLine();
+            Console.WriteLine("--- Minsta och Högsta poängen ---");
+            int max = (from student in studenter
+                       select student.Poang).Max();
+
+            int min = (from student in studenter
+                       select student.Poang).Min();
+
+            Console.WriteLine($"Min: {min} | Max: {max}");
+
+
         }
     }
 }
